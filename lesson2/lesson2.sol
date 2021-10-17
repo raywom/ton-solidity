@@ -18,7 +18,7 @@ contract production {
 
     function multiply(uint256 value) public checkOwnerAndAccept
     {
-        require(value >= 1 && value <= 10, 101, "Value should be in range [0, 10]");
+        require(value >= 1 && value <= 10, 102);
         prod *= value;
     }
 }
