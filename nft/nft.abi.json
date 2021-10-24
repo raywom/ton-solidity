@@ -1,0 +1,74 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "addDotaAccount",
+			"inputs": [
+				{"name":"id","type":"string"},
+				{"name":"name","type":"string"},
+				{"name":"mmr","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDotaAccountOwner",
+			"inputs": [
+				{"name":"DotaAccountId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getDotaAccountInfo",
+			"inputs": [
+				{"name":"DotaAccountId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"DotaAccountid","type":"string"},
+				{"name":"DotaAccountName","type":"string"},
+				{"name":"MMR","type":"uint256"}
+			]
+		},
+		{
+			"name": "putOnSale",
+			"inputs": [
+				{"name":"DotaAccountId","type":"uint256"},
+				{"name":"price","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "changeDotaAccountId",
+			"inputs": [
+				{"name":"DotaAccountId","type":"uint256"},
+				{"name":"newDotaAccountId","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"components":[{"name":"id","type":"string"},{"name":"name","type":"string"},{"name":"mmr","type":"uint256"}],"name":"DotaAccounts","type":"tuple[]"},
+		{"name":"DotaAccountToOwner","type":"map(uint256,uint256)"},
+		{"name":"DotaAccountPrice","type":"map(uint256,uint256)"}
+	]
+}
