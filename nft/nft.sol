@@ -21,7 +21,7 @@ contract nft {
 
     function addDotaAccount (string id, string name, uint mmr) public {
         for(DotaAccount account : DotaAccounts) {
-            require(account.name != name);
+            require(account.id != id);
         }
         tvm.accept();
         DotaAccounts.push(DotaAccount(id, name, mmr));
