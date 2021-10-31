@@ -23,7 +23,7 @@ contract WarriorUnit is GameObject {
     }
 
     function sendMoneyAndSelfDestroy(address dest) virtual public checkOwnerAndAccept override {
-        base.delUnit(msg.sender);
+        base.popUnit(msg.sender);
         dest.transfer(1, true, 160);
     }
 

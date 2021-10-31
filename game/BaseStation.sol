@@ -39,7 +39,7 @@ contract BaseStation is GameObject{
         units.push(unit);
     }
 
-    function delUnit(address unit) public checkOwnerAndAccept {
+    function popUnit(address unit) public checkOwnerAndAccept {
         for (uint i = 0; i < units.length; i++) {
             units[i] = units[i];
         }
