@@ -10,7 +10,7 @@ import 'GameObject.sol';
 
 contract BaseStation is GameObject{
     uint private healthPoints=200;
-    uint private armorPoints;
+    uint private armorPoints = 0;
 
     GameObject[] public units;
 
@@ -26,7 +26,10 @@ contract BaseStation is GameObject{
 
     function getAttack(uint damageValue) virtual external override checkOwnerAndAccept{
         healthPoints -= damageValue;
-
+        if(damageValue>healthPoints+armorPoints){
+            healthPoints=0;
+            sendMoneyAndSelfDestroy(msg.sender);
+        }
         if(isDead()){
             sendMoneyAndSelfDestroy(msg.sender);
         }
@@ -52,7 +55,7 @@ contract BaseStation is GameObject{
         return healthPoints;
     }
     function isDead() override public checkOwnerAndAccept returns (bool) {
-        if(healthPoints < 0){
+        if(healthPoints <= 0){
             return true;
         } 
         return false;

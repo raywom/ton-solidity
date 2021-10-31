@@ -30,11 +30,15 @@ contract GameObject is IGameObject{
     }
 
     function getAttack(uint damageValue) virtual external override checkOwnerAndAccept{
-        if(damageValue!=0){
+        if(damageValue>armorPoints){
             healthPoints -= damageValue - armorPoints;
         }
-        else {
-            armorPoints-=damageValue;
+        else{
+            armorPoints -= damageValue;
+        }
+        if(damageValue>healthPoints+armorPoints){
+            healthPoints=0;
+            sendMoneyAndSelfDestroy(msg.sender);
         }
         if(isDead()){
             sendMoneyAndSelfDestroy(msg.sender);

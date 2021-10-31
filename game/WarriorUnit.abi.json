@@ -12,7 +12,7 @@
 			]
 		},
 		{
-			"name": "getDamage",
+			"name": "setDamage",
 			"inputs": [
 				{"name":"damageValue","type":"uint256"}
 			],

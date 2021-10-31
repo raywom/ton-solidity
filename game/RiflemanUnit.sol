@@ -7,7 +7,7 @@ import "WarriorUnit.sol";
 contract RiflemanUnit is WarriorUnit {
     uint private damage = 60;
     uint private healthPoints = 80;
-    uint private armorPoints;
+    uint private armorPoints = 0;
 
     BaseStation private base;
     address private baseAddress = address(base);
@@ -34,11 +34,15 @@ contract RiflemanUnit is WarriorUnit {
     }
 
     function getAttack(uint damageValue) virtual external override checkOwnerAndAccept{
-        if(damageValue!=0){
+        if(damageValue>armorPoints){
             healthPoints -= damageValue - armorPoints;
         }
-        else {
-            armorPoints-=damageValue;
+        else{
+            armorPoints -= damageValue;
+        }
+        if(damageValue>healthPoints+armorPoints){
+            healthPoints=0;
+            sendMoneyAndSelfDestroy(msg.sender);
         }
         if(isDead()){
             sendMoneyAndSelfDestroy(msg.sender);
@@ -46,13 +50,14 @@ contract RiflemanUnit is WarriorUnit {
 
     }
 
+
     function sendMoneyAndSelfDestroy(address dest) virtual public checkOwnerAndAccept override {
         base.delUnit(msg.sender);
         dest.transfer(1, true, 160);
     }
 
     function isDead() override public checkOwnerAndAccept returns (bool) {
-        if(healthPoints < 0){
+        if(healthPoints <= 0){
             return true;
         } 
         return false;

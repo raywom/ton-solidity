@@ -32,11 +32,15 @@ contract WarriorUnit is GameObject {
     }
 
     function getAttack(uint damageValue) virtual external override checkOwnerAndAccept{
-        if(damageValue!=0){
+        if(damageValue>armorPoints){
             healthPoints -= damageValue - armorPoints;
         }
-        else {
+        else{
             armorPoints -= damageValue;
+        }
+        if(damageValue>healthPoints+armorPoints){
+            healthPoints=0;
+            sendMoneyAndSelfDestroy(msg.sender);
         }
         if(isDead()){
             sendMoneyAndSelfDestroy(msg.sender);
@@ -45,7 +49,7 @@ contract WarriorUnit is GameObject {
     }
 
     function isDead() virtual override public checkOwnerAndAccept returns (bool) {
-        if(healthPoints < 0){
+        if(healthPoints <= 0){
             return true;
         } 
         return false;
