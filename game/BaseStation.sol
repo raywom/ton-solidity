@@ -9,7 +9,7 @@ pragma AbiHeader expire;
 import 'GameObject.sol';
 
 contract BaseStation is GameObject{
-    uint private healthPoints;
+    uint private healthPoints=200;
     uint private armorPoints;
 
     GameObject[] public units;
