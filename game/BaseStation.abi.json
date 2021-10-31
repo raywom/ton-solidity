@@ -19,6 +19,14 @@
 			]
 		},
 		{
+			"name": "getAttack",
+			"inputs": [
+				{"name":"damageValue","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "addUnit",
 			"inputs": [
 				{"name":"unit","type":"address"}
@@ -43,19 +51,19 @@
 			]
 		},
 		{
+			"name": "getHP",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
 			"name": "isDead",
 			"inputs": [
 			],
 			"outputs": [
 				{"name":"value0","type":"bool"}
-			]
-		},
-		{
-			"name": "getAttack",
-			"inputs": [
-				{"name":"damageValue","type":"uint256"}
-			],
-			"outputs": [
 			]
 		},
 		{

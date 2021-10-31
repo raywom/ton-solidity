@@ -24,6 +24,14 @@ contract BaseStation is GameObject{
         armorPoints+=_armorPoints;
     }
 
+    function getAttack(uint damageValue) virtual external override checkOwnerAndAccept{
+        healthPoints -= damageValue;
+
+        if(isDead()){
+            sendMoneyAndSelfDestroy(msg.sender);
+        }
+
+    }
     function addUnit(GameObject unit) public checkOwnerAndAccept {
         units.push(unit);
     }
@@ -40,11 +48,13 @@ contract BaseStation is GameObject{
         }
         dest.transfer(1, true, 160);
     }
-
+    function getHP() public checkOwnerAndAccept returns (uint) {
+        return healthPoints;
+    }
     function isDead() override public checkOwnerAndAccept returns (bool) {
         if(healthPoints < 0){
-            return false;
+            return true;
         } 
-        return true;
+        return false;
     }
 }

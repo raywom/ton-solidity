@@ -46,8 +46,8 @@ contract WarriorUnit is GameObject {
 
     function isDead() virtual override public checkOwnerAndAccept returns (bool) {
         if(healthPoints < 0){
-            return false;
+            return true;
         } 
-        return true;
+        return false;
     }
 }

@@ -48,8 +48,8 @@ contract GameObject is IGameObject{
 
     function isDead() virtual public checkOwnerAndAccept returns (bool) {
         if(healthPoints < 0){
-            return false;
+            return true;
         } 
-        return true;
+        return false;
     }
 }

@@ -4,7 +4,7 @@ pragma AbiHeader expire;
 import "WarriorUnit.sol";
 
 
-contract Archer is WarriorUnit {
+contract RiflemanUnit is WarriorUnit {
     uint private damage = 60;
     uint private healthPoints = 80;
     uint private armorPoints;
@@ -53,8 +53,8 @@ contract Archer is WarriorUnit {
 
     function isDead() override public checkOwnerAndAccept returns (bool) {
         if(healthPoints < 0){
-            return false;
+            return true;
         } 
-        return true;
+        return false;
     }
 }
